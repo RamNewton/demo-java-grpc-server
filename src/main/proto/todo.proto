@@ -1,0 +1,20 @@
+syntax = "proto3";
+package todo;
+option java_package = "com.ram.grpcdemo.proto.todo";
+
+service ToDoService {
+  rpc CreateTodo (ToDoItem) returns (ToDoItem) {};
+  rpc GetAllTodos (Empty) returns (ToDoItems) {};
+  rpc GetTodosStream(Empty) returns (stream ToDoItem) {};
+}
+
+message ToDoItem {
+  int32 id = 1;
+  string description = 2;
+}
+
+message ToDoItems {
+  repeated ToDoItem items = 1;
+}
+
+message Empty {}
